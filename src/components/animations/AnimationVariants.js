@@ -1,18 +1,16 @@
 export const cardvariants = {
   initial: {
     x: 0,
-    opacity: 0.5,
+    opacity: 0.8,
   },
   animate: {
     x: 0,
     opacity: 1,
   },
-  exit: {
-    x: "-1vw",
-    opacity: 0.5,
-    transition: {
-      type: "intertia",
-      duration: 0.3,
-    },
+  exit: (direction) => {
+    return {
+      opacity: 0.8,
+      x: direction === "r" ? -100 : 100,
+    };
   },
 };
