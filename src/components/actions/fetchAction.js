@@ -2,7 +2,7 @@ import { sortWeather } from "../../utils/sortWeather";
 
 const fetchAction = () => async (dispatch) => {
   var forecast = await fetch(
-    "http://api.openweathermap.org/data/2.5/forecast?q=Munich,de&APPID=97b5a12e029cd29f5cb6c2e0cddd1972&cnt=40"
+    "http://api.openweathermap.org/data/2.5/forecast?q=Munich,de&APPID=75f972b80e26f14fe6c920aa6a85ad57&cnt=40"
   ).then((data) => {
     return data.json();
   });

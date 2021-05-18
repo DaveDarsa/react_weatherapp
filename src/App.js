@@ -12,25 +12,22 @@ import { StyledContainer } from "./components/styles/CardStyles";
 //utils
 import { paginate } from "./utils/paginate";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 function App() {
-  const [pageIndex, pageSize, isLoading, dailyForecast] = useSelector(
-    (state) => [
-      state.uiDetails.pageIndex,
-      state.uiDetails.pageSize,
-      state.weatherInfo.isLoading,
-      state.weatherInfo.dailyForecast,
+  const [pageIndex, selectedCard, isLoading, dailyForecast] = useSelector(
+    (store) => [
+      store.uiDetails.pageIndex,
+      store.uiDetails.selectedCard,
+      store.weatherInfo.isLoading,
+      store.weatherInfo.dailyForecast,
     ]
   );
 
   const pages = paginate(
-    dailyForecast.map((day, idx) => {
-      return <Weathercard key={`card ${idx}`} idx={idx} dayInfo={day} />;
+    dailyForecast.map((dayInfo, idx) => {
+      return <Weathercard key={`card ${idx}`} idx={idx} dayInfo={dayInfo} />;
     }),
     3
   );
-
   return (
     <div className="App">
       <GlobalStyle />
@@ -41,8 +38,8 @@ function App() {
           <div className="forecast">
             <Tempcontrols />
             <Arrowcontrols pages={pages} />
-            <StyledContainer layout>{pages[pageIndex]}</StyledContainer>
-            <Barchart />
+            <StyledContainer>{pages[pageIndex]}</StyledContainer>
+            <Barchart dataToGraph={dailyForecast[selectedCard]} />
           </div>
         </div>
       )}

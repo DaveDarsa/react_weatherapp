@@ -6,8 +6,6 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import styled from "styled-components";
 
-// pageSize: 3,
-//pageIndex: 0,
 const Arrowcontrols = ({ pages }) => {
   const dispatch = useDispatch();
   const [pageIndex] = useSelector((state) => [state.uiDetails.pageIndex]);
@@ -24,7 +22,7 @@ const Arrowcontrols = ({ pages }) => {
       payload: { pageSize: pages[pageIndex + 1].length },
     });
   };
-  console.log(pages[pageIndex]);
+  // console.log(pages[pageIndex]);
 
   return (
     <StyledArrows className="arrows">

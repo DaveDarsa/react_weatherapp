@@ -4,9 +4,15 @@ import { StyledCard } from "./styles/CardStyles";
 //animations
 import { cardvariants } from "./animations/AnimationVariants";
 
-const Weathercard = ({ dayInfo, idx }) => {
-  const selectedCard = useSelector((state) => [state.uiDetails.selectedCard]);
+//utils
+import { calculateAverage } from "./../utils/calculateAverage";
+import { formatDate } from "./../utils/formatDate";
 
+const Weathercard = ({ dayInfo, idx }) => {
+  const [selectedCard, selectedUnit] = useSelector((store) => [
+    store.uiDetails.selectedCard,
+    store.uiDetails.selectedUnit,
+  ]);
   const dispatch = useDispatch();
 
   return (
@@ -19,8 +25,12 @@ const Weathercard = ({ dayInfo, idx }) => {
         dispatch({ type: "SET_SELECTEDCARD", payload: { selectedCard: idx } });
       }}
     >
-      <p>Average Temp : {dayInfo[0].main.temp}</p>
-      <p>TIme : {dayInfo[0]["dt_txt"].slice(0, 10)}</p>
+      <p>
+        <span>Average Temp :</span> {calculateAverage(dayInfo, selectedUnit)}{" "}
+      </p>
+      <p>
+        <span>Date :</span> {formatDate(dayInfo[dayInfo.length - 1].dt)}{" "}
+      </p>
     </StyledCard>
   );
 };

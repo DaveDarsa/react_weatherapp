@@ -1,7 +1,27 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
+//time and temp conversion helpers
+import { convertTemp } from "./../utils/convertTemp";
 
-const Barchart = ({ datatograph }) => {
+const Barchart = ({ dataToGraph }) => {
+  const [selectedUnit, selectedCard] = useSelector((store) => {
+    return [store.uiDetails.selectedUnit, store.uiDetails.selectedCard];
+  });
+  //extract  temps from this day's info.
+  const data = dataToGraph.map((hourly) => {
+    return convertTemp(hourly.main.temp, selectedUnit);
+  });
+
+  //since first or last day's info could be incomplete,fill the first day up with dummy data for the graph
+  if (selectedCard === 0 && data.length < 8) {
+    //add dummy info before the curernt day's forecast
+    let datalength = data.length;
+    for (let i = 0; i < 8 - datalength; i++) {
+      data.unshift(null);
+    }
+  }
+
   const state = {
     labels: [
       "00:00 AM",
@@ -9,9 +29,9 @@ const Barchart = ({ datatograph }) => {
       "06:00 AM",
       "09:00 AM",
       "12:00 PM",
-      "15:00 PM",
-      "18:00 PM",
-      "21:00 PM",
+      "3:00 PM",
+      "6:00 PM",
+      "9:00 PM",
     ],
     datasets: [
       {
@@ -19,7 +39,7 @@ const Barchart = ({ datatograph }) => {
         backgroundColor: "#4E75C1",
         borderColor: "rgba(0,0,0,.8)",
         borderWidth: 1,
-        data: [65, 59, 80, 81, 56, 21, 41, 28],
+        data: data,
       },
     ],
     hoverOffset: 2,
@@ -38,7 +58,17 @@ const Barchart = ({ datatograph }) => {
           },
           scales: {
             x: {
-              ticks: { color: "black", font: { size: 15, weight: 550 } },
+              ticks: {
+                color: "black",
+                font: function (context) {
+                  var width = context.chart.width;
+                  var size = width < 600 ? 8 : 16;
+                  return {
+                    size: size,
+                    weight: 600,
+                  };
+                },
+              },
               grid: {
                 display: false,
               },
