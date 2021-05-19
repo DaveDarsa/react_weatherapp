@@ -16,7 +16,7 @@ const Tempcontrols = () => {
         <span
           className={`celcius ${selectedUnit === "C" ? "selected" : ""}`}
         ></span>
-        Celcius
+        Celsius
       </div>
       <div className="tempbutton" onClick={setfahrenheit}>
         <span

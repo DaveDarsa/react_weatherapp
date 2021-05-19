@@ -26,17 +26,22 @@ If the forecast is for the next 5 days, page 1 has 3 cards and page 2 has 2.
 If the forecast is for the next 6 (incomplete for the first and last day), Page 1 has 3 cards, and Page 2 also has 3 cards.
 
 **The background**
+
 Since the redux store contains today's current weather as well, I thought it would be nice if the background was dynamic and matched current weather's condition (rain/clouds/sun/snow/mist - as documented in the Openweathermap API).
 
 **Cards**
+
 Each card displays calculated average temperature for the day and the formatted date, as well as the earliest weather condition icon. But for the first card, since it's the current day's card, I added current weather and current weather icon as well, for more accuracy.
 
 **Arrows**
+
 The arrows change the current displayed cards array (page), to the following or previous page, and only rendering if there's either a page before, or after the current one.
 
 **Temperature togglers**
-The toggle buttons change the displayed temperature info from Fahrenheit to celsius or vice versa. Also changes the data which is displayed in the barchart.
+
+The toggle buttons change the displayed temperature info from Fahrenheit to Celsius or vice versa. Also changes the data which is displayed in the barchart.
 
 **Barchart**
-As mentioned above, I used chart.js for rendering the barchart. It takes in selected card's forecast and renders out the 3-hourly chart. Max bar number is 8, but depending on the API response and the time intervals for a selected day, the minimum number of bars can be 1, which is rendered respectively to it's time.
+
+As mentioned above, I used chart.js for rendering the barchart. It takes in the selected card's forecast and renders out the 3-hourly chart. Max bar number is 8, but depending on the API response and the time intervals for a selected day, the minimum number of bars can be 1, which is rendered respectively to it's time.
 The barchart is fully responsive and shows temperature information on hover or on touch on mobile devices.
