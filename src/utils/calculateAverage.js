@@ -5,5 +5,5 @@ export const calculateAverage = (arr, tempUnit) => {
   for (let i of arr) {
     total += i.main.temp;
   }
-  return convertTemp(total / arr.length, tempUnit) + tempUnit;
+  return convertTemp(total / arr.length, tempUnit);
 };

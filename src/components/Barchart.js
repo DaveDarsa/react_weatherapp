@@ -36,7 +36,7 @@ const Barchart = ({ dataToGraph }) => {
     datasets: [
       {
         label: "Temperature",
-        backgroundColor: "#4E75C1",
+        backgroundColor: "rgba(78, 117, 193,.9)",
         borderColor: "rgba(0,0,0,.8)",
         borderWidth: 1,
         data: data,

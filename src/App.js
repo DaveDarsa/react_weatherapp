@@ -9,18 +9,19 @@ import Barchart from "./components/Barchart";
 //styles
 import { GlobalStyle } from "./components/styles/GlobalStyle";
 import { StyledContainer } from "./components/styles/CardStyles";
+import { StyledWrapper } from "./components/styles/WrapperStyles";
 //utils
 import { paginate } from "./utils/paginate";
 
 function App() {
-  const [pageIndex, selectedCard, isLoading, dailyForecast] = useSelector(
-    (store) => [
+  const [pageIndex, selectedCard, isLoading, dailyForecast, currentWeather] =
+    useSelector((store) => [
       store.uiDetails.pageIndex,
       store.uiDetails.selectedCard,
       store.weatherInfo.isLoading,
       store.weatherInfo.dailyForecast,
-    ]
-  );
+      store.weatherInfo.currentWeather,
+    ]);
 
   const pages = paginate(
     dailyForecast.map((dayInfo, idx) => {
@@ -34,14 +35,17 @@ function App() {
       {isLoading ? (
         <LoadingScreen />
       ) : (
-        <div className="wrapper">
+        <StyledWrapper
+          className="wrapper"
+          condition={currentWeather.weather[0].main}
+        >
           <div className="forecast">
             <Tempcontrols />
             <Arrowcontrols pages={pages} />
             <StyledContainer>{pages[pageIndex]}</StyledContainer>
             <Barchart dataToGraph={dailyForecast[selectedCard]} />
           </div>
-        </div>
+        </StyledWrapper>
       )}
     </div>
   );

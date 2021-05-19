@@ -1,6 +1,7 @@
 const initStore = {
   isLoading: true,
   dailyForecast: [],
+  currentWeather: {},
 };
 
 const weatherReducer = (store = initStore, action) => {
@@ -8,6 +9,7 @@ const weatherReducer = (store = initStore, action) => {
     return {
       ...store,
       dailyForecast: action.payload.dailyForecast,
+      currentWeather: action.payload.currentWeather,
       isLoading: false,
     };
   }

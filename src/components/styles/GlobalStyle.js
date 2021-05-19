@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import Munichbg from "../../images/Munich1.jpg";
 
 export const GlobalStyle = createGlobalStyle`
     body{
@@ -17,9 +16,15 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing:border-box;
         font-size:62.5%;
     }
-    @media screen and (max-width:768px){
+    @media screen and (max-width:900px){
         html{
             font-size:50%;
+            
+        }
+    }
+    @media screen and (max-width:768px){
+        html{
+            font-size:45%;
             
         }
         .forecast{
@@ -35,23 +40,13 @@ export const GlobalStyle = createGlobalStyle`
      
         }
     }
-    @media screen and (max-width:400px){
+    @media screen and (max-width:450px){
         html{
             font-size:40%;
         }
        
     }
-    .wrapper{
-        min-height:100vh;
-        background:url(${Munichbg});
-        background-size:cover;
-        background-position:center top;
-        background-repeat:no-repeat;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-     
-    }
+
     .forecast{
         flex-basis:90%;
         padding:1.5rem;
