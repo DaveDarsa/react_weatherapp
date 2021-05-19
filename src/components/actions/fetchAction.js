@@ -1,7 +1,7 @@
 import { sortWeather } from "../../utils/sortWeather";
 
 //get the forecast AND the current weather(for dynamic background and accurate weather icon)
-const fetchAction = () => async (dispatch) => {
+export const fetchAction = () => async (dispatch) => {
   var forecast = await fetch(
     "https://api.openweathermap.org/data/2.5/forecast?q=Munich,de&APPID=75f972b80e26f14fe6c920aa6a85ad57&cnt=40"
   ).then((data) => {
