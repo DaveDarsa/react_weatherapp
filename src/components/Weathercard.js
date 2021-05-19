@@ -35,7 +35,7 @@ const Weathercard = ({ dayInfo, idx }) => {
       }}
     >
       <img
-        src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
         alt="weather icon"
       />
       {idx === 0 && (
