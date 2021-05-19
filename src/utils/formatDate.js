@@ -17,7 +17,7 @@ export const formatDate = (timestamp) => {
   ];
   var date = new Date(timestamp * 1000);
 
-  return `${date.getDate()} ${
+  return `${date.getUTCDate()} ${
     monthNames[date.getMonth()]
   } ${date.getFullYear()}`;
 };
