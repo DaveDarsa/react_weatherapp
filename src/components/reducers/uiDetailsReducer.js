@@ -24,7 +24,7 @@ const uiDetailsReducer = (store = initStore, action) => {
     case "SET_FAHRENHEIT":
       return { ...store, selectedUnit: "F" };
 
-    case "SET_CELCIUS":
+    case "SET_CELSIUS":
       return { ...store, selectedUnit: "C" };
 
     case "SET_SELECTEDCARD":

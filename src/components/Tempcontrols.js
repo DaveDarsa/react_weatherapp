@@ -4,15 +4,15 @@ import { StyledTempcontrols } from "./styles/TempcontrolStyles";
 const Tempcontrols = () => {
   const [selectedUnit] = useSelector((store) => store.uiDetails.selectedUnit);
   const dispatch = useDispatch();
-  const setcelcius = () => {
-    dispatch({ type: "SET_CELCIUS" });
+  const setcelsius = () => {
+    dispatch({ type: "SET_CELSIUS" });
   };
   const setfahrenheit = () => {
     dispatch({ type: "SET_FAHRENHEIT" });
   };
   return (
     <StyledTempcontrols>
-      <div className="tempbutton" onClick={setcelcius}>
+      <div className="tempbutton" onClick={setcelsius}>
         <span
           className={`celcius ${selectedUnit === "C" ? "selected" : ""}`}
         ></span>

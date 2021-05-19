@@ -45,3 +45,12 @@ The toggle buttons change the displayed temperature info from Fahrenheit to Cels
 
 As mentioned above, I used chart.js for rendering the barchart. It takes in the selected card's forecast and renders out the 3-hourly chart. Max bar number is 8, but depending on the API response and the time intervals for a selected day, the minimum number of bars can be 1, which is rendered respectively to it's time.
 The barchart is fully responsive and shows temperature information on hover or on touch on mobile devices.
+
+**Tests**
+
+Wrote 2 test suites - one for UI details reducer and one for fetchAction (async). For pretend API I used Jest Fetch Mock.
+For running tests, just running the Create-React-App default test script works.
+
+```sh
+npm test
+```
