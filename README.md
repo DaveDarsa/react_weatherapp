@@ -31,7 +31,7 @@ Since the redux store contains today's current weather as well, I thought it wou
 
 **Cards**
 
-Each card displays calculated average temperature for the day and the formatted date, as well as the earliest weather condition icon. But for the first card, since it's the current day's card, I added current weather and current weather icon as well, for more accuracy.
+Each card displays calculated average temperature for the day, average humidity and the formatted date, as well as the earliest weather condition icon. But for the first card, since it's the current day's card, I added current weather and current weather icon as well, for more accuracy.
 
 **Arrows**
 

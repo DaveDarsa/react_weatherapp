@@ -33,10 +33,10 @@ export const StyledCard = styled(motion.div)`
     .temp,
     .humid {
       display: inline-block;
-      color: #4e75c1;
+      color: #2c477d;
       font-size: 1.75rem;
       max-width: 3rem;
-      font-weight: bold;
+      font-weight: 800;
     }
     .humid {
       display: flex;
