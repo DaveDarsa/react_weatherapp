@@ -35,11 +35,11 @@ export const StyledTempcontrols = styled.div`
       height: 1.2rem;
       width: 1.2rem;
       transition: all 0.3s ease;
-      background-color: #fff;
+      background-color: #4e75c1;
       border-radius: 10rem;
     }
     &.selected::after {
-      background-color: #4e75c1;
+      background-color: #fff;
     }
   }
 `;
