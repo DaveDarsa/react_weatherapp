@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyledCard } from "./styles/CardStyles";
 //animations
 import { cardvariants } from "./animations/AnimationVariants";
-
+//imgs
+import humidity from "../images/humidity.png";
 //utils
-import { calculateAverage } from "./../utils/calculateAverage";
+import { calculateAverageTemp } from "./../utils/calculateAverage";
+import { avgHumid } from "./../utils/avgHumid";
 import { convertTemp } from "../utils/convertTemp";
 import { formatDate } from "./../utils/formatDate";
 import { addSuffix } from "../utils/addSuffix";
@@ -39,17 +41,27 @@ const Weathercard = ({ dayInfo, idx }) => {
         alt="weather icon"
       />
       {idx === 0 && (
-        <p>
+        <div className="flexgroup">
           <span>Current Weather: </span>
-          {convertTemp(currentWeather.main.temp, selectedUnit) + suffix}
-        </p>
+          <span className="temp">
+            {convertTemp(currentWeather.main.temp, selectedUnit) + suffix}
+          </span>
+        </div>
       )}
-      <p>
+      <div className="flexgroup">
         <span>Average Temp: </span>
-        {calculateAverage(dayInfo, selectedUnit) + suffix}
-      </p>
+        <span className="temp">
+          {calculateAverageTemp(dayInfo, selectedUnit) + suffix}
+        </span>
+      </div>
+      <div className="flexgroup">
+        <span>Average Humidity: </span>
+        <span className="humid">
+          {avgHumid(dayInfo)} <img src={humidity} alt="humidity" />
+        </span>
+      </div>
       <p>
-        <span>Date: </span> {formatDate(dayInfo[dayInfo.length - 1].dt)}
+        <span> {formatDate(dayInfo[dayInfo.length - 1].dt)}</span>
       </p>
     </StyledCard>
   );
